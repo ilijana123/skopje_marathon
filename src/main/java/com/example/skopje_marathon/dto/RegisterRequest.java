@@ -1,5 +1,6 @@
-package com.example.skopje_marathon.model;
+package com.example.skopje_marathon.dto;
 
+import com.example.skopje_marathon.enumeration.CategoryType;
 import jakarta.validation.constraints.*;
 
 public record RegisterRequest(
@@ -12,5 +13,5 @@ public record RegisterRequest(
     String email,
     @Min(value = 16, message = "Age should not be less than 16.")
     int age,
-    Category category
+    CategoryType categoryType
 ) {}

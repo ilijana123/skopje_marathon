@@ -1,5 +1,6 @@
 package com.example.skopje_marathon.model;
 
+import com.example.skopje_marathon.enumeration.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,7 +11,8 @@ public class Race {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     private String registrationNumber;

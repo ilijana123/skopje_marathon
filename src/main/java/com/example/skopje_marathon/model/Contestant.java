@@ -13,6 +13,13 @@ public class Contestant {
     private String lastName;
     private String email;
     private int age;
+    //not needed for now
+    //    private int billValue;
+    //    private String cardNumber;
+    //    private String cardHolder;
+    //    private String dateValue;
+    //    private String cvc;
     @OneToOne(mappedBy = "contestant", cascade = CascadeType.ALL)
     private Race race;
 }
+
