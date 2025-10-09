@@ -35,7 +35,6 @@ public class PaymentService {
             return buildResponseFromPayment(existingPayment, race);
         }
 
-        // Create new payment
         Payment payment = new Payment();
         payment.setTransactionId(transactionId);
         payment.setAmount(race.getCategory().getPrice());
@@ -67,6 +66,7 @@ public class PaymentService {
 
                     response.setStatus(PaymentStatus.SUCCESS);
                     response.setStartNumber(startNumber);
+                    response.setRegistrationNumber(race.getRegistrationNumber());
                     response.setMessage("Payment successfully processed");
                 } else if (attempts >= 3) {
                     payment.setStatus(PaymentStatus.FAILED);

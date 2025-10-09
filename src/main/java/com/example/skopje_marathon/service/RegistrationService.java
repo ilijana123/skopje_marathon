@@ -41,7 +41,7 @@ public class RegistrationService {
         race.setContestant(contestant);
 
         contestant.setRace(race);
-
+        contestantRepository.save(contestant);
         return new RegisterResponse(race.getRegistrationNumber(), "Registration successful");
     }
 

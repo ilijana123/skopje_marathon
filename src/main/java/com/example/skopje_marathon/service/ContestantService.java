@@ -2,18 +2,25 @@ package com.example.skopje_marathon.service;
 
 import com.example.skopje_marathon.dto.CheckContestantRequest;
 import com.example.skopje_marathon.dto.CheckContestantResponse;
+import com.example.skopje_marathon.dto.ContestantDTO;
+import com.example.skopje_marathon.enumeration.CategoryType;
+import com.example.skopje_marathon.mapper.ContestantMapper;
 import com.example.skopje_marathon.model.Race;
 import com.example.skopje_marathon.enumeration.Status;
 import com.example.skopje_marathon.repository.RaceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ContestantService {
 
     private final RaceRepository raceRepository;
+    private final ContestantMapper contestantMapper;
 
-    public ContestantService(RaceRepository raceRepository) {
+    public ContestantService(RaceRepository raceRepository, ContestantMapper contestantMapper) {
         this.raceRepository = raceRepository;
+        this.contestantMapper = contestantMapper;
     }
 
     public CheckContestantResponse checkContestant(CheckContestantRequest request) {
@@ -41,5 +48,29 @@ public class ContestantService {
             response.setPaymentLink("/payments/process/" + race.getId());
         }
         return response;
+    }
+
+    public List<ContestantDTO> getAllPaidContestants() {
+        return raceRepository.findByStatus(Status.PAID)
+                .stream()
+                .map(Race::getContestant)
+                .map(contestantMapper::toDto)
+                .toList();
+    }
+
+    public List<ContestantDTO> searchContestantsByName(String name) {
+        return raceRepository.findByStatusAndContestantFirstNameContainingIgnoreCase(Status.PAID, name)
+                .stream()
+                .map(Race::getContestant)
+                .map(contestantMapper::toDto)
+                .toList();
+    }
+
+    public List<ContestantDTO> filterPaidByCategory(CategoryType categoryType) {
+        return raceRepository.findByStatusAndCategory_Type(Status.PAID, categoryType)
+                .stream()
+                .map(Race::getContestant)
+                .map(contestantMapper::toDto)
+                .toList();
     }
 }
