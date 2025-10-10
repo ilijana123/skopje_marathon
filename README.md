@@ -50,5 +50,6 @@ Payment Simulation
 The payment process is simulated (no real transactions) and each payment attempt has a 50% chance of success. A contestant can retry up to 3 times and if all 3 attempts fail, the payment status is set to FAILED. If any attempt succeeds, the status is set to SUCCESS and a starting number is generated.
 
 Used MapStruct for automatic mapping.
+On application startup, the category table is seeded with default values via SQL insert statement
 
 <img width="776" height="818" alt="image" src="https://github.com/user-attachments/assets/5f269c4e-d7ab-4c11-9396-a690369490d5" />
