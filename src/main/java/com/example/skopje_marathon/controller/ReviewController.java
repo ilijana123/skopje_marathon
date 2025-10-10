@@ -3,11 +3,12 @@ package com.example.skopje_marathon.controller;
 import com.example.skopje_marathon.dto.ReviewDTO;
 import com.example.skopje_marathon.model.Review;
 import com.example.skopje_marathon.service.ReviewService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.*;
-
 import java.security.Principal;
 import java.util.List;
 
+@SecurityRequirement(name = "bearerAuth")
 @RestController
 @RequestMapping("/reviews")
 public class ReviewController {
