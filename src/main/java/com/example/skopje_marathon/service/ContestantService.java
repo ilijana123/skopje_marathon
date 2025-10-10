@@ -8,6 +8,7 @@ import com.example.skopje_marathon.mapper.ContestantMapper;
 import com.example.skopje_marathon.model.Race;
 import com.example.skopje_marathon.enumeration.Status;
 import com.example.skopje_marathon.repository.RaceRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +37,11 @@ public class ContestantService {
             throw new RuntimeException("Either email or registration number is required.");
         }
 
+        return getCheckContestantResponse(race);
+    }
+
+    @NotNull
+    private static CheckContestantResponse getCheckContestantResponse(Race race) {
         CheckContestantResponse response = new CheckContestantResponse();
 
         if (race.getStatus() == Status.PAID) {

@@ -8,6 +8,7 @@ import com.example.skopje_marathon.repository.CategoryRepository;
 import com.example.skopje_marathon.repository.ContestantRepository;
 import com.example.skopje_marathon.mapper.ContestantMapper;
 import jakarta.transaction.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -18,10 +19,12 @@ public class RegistrationService {
     private final ContestantRepository contestantRepository;
     private final CategoryRepository categoryRepository;
     private final ContestantMapper contestantMapper;
-    public RegistrationService(ContestantRepository contestantRepository, CategoryRepository categoryRepository, ContestantMapper contestantMapper){
+    private final PasswordEncoder passwordEncoder;
+    public RegistrationService(ContestantRepository contestantRepository, CategoryRepository categoryRepository, ContestantMapper contestantMapper, PasswordEncoder passwordEncoder){
         this.contestantRepository = contestantRepository;
         this.categoryRepository = categoryRepository;
         this.contestantMapper = contestantMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
@@ -30,7 +33,7 @@ public class RegistrationService {
             throw new IllegalArgumentException("Email already in use");
         }
         Contestant contestant = contestantMapper.registerRequestToContestant(registerRequest);
-
+        contestant.setPassword(passwordEncoder.encode(registerRequest.password()));
         Category category = categoryRepository.findByType(registerRequest.categoryType())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid category type: " + registerRequest.categoryType()));
 

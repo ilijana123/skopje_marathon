@@ -1,5 +1,6 @@
 package com.example.skopje_marathon.model;
 
+import com.example.skopje_marathon.enumeration.Gender;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,14 +12,12 @@ public class Contestant {
     private Long id;
     private String firstName;
     private String lastName;
+    private Gender gender;
+    private String team;
+    private String country;
+    private String password;
     private String email;
     private int age;
-    //not needed for now
-    //    private int billValue;
-    //    private String cardNumber;
-    //    private String cardHolder;
-    //    private String dateValue;
-    //    private String cvc;
     @OneToOne(mappedBy = "contestant", cascade = CascadeType.ALL)
     private Race race;
 }

@@ -4,8 +4,11 @@ import lombok.Data;
 
 @Data
 public class ContestantDTO {
+    private Integer startNumber;
     private String firstName;
     private String lastName;
-    private String email;
-    private int age;
+    private String gender;
+    private String team;
+    private String country;
+    private String distance;
 }

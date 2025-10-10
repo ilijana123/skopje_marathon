@@ -17,4 +17,7 @@ public class Category {
 
     @Column(nullable = false)
     private Double price;
+
+    @Column(nullable = false)
+    private Integer distance;
 }
