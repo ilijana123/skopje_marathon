@@ -36,7 +36,7 @@ Database name: skopjemarathon
 Username: postgres
 Password: 6vNb9PZb
 
-P.S.: Not ideal having the credentials here, but they ae not exposed in the code(.env added to .gitignore)
+P.S.: Not ideal having the credentials here, but they aрe not exposed in the code(.env added to .gitignore)
 
 
 https://ws3333-3182.postman.co/workspace/WS-Workspace~1c54f13a-b90a-410f-bfc1-876b5c0badd3/collection/41348129-2d84f71d-b528-4a0c-a284-05f12a921e30?action=share&creator=41348129&active-environment=41348129-567601e0-9947-491f-97b3-4df49b209a7b
