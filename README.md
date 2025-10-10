@@ -1,29 +1,3 @@
-For testing locally:
-
-Linux / macOS
-
-export SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/skopjemarathon
-export SPRING_DATASOURCE_USERNAME=postgres
-export SPRING_DATASOURCE_PASSWORD=6vNb9PZb
-export APP_JWT_SECRET=superSecretKey123superSecretKey123
-./gradlew bootRun
-
-Windows PowerShell
-
-$env:SPRING_DATASOURCE_URL="jdbc:postgresql://localhost:5432/skopjemarathon"
-$env:SPRING_DATASOURCE_USERNAME="postgres"
-$env:SPRING_DATASOURCE_PASSWORD="6vNb9PZb"
-$env:APP_JWT_SECRET="superSecretKey123superSecretKey123"
-.\gradlew bootRun
-
-Windows CMD
-
-set SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/skopjemarathon
-set SPRING_DATASOURCE_USERNAME=postgres
-set SPRING_DATASOURCE_PASSWORD=6vNb9PZb
-set APP_JWT_SECRET=superSecretKey123superSecretKey123
-gradlew bootRun
-
 Prerequisites: Docker installed and Docker Compose installed 
 
 Steps:
@@ -53,3 +27,28 @@ Used MapStruct for automatic mapping.
 On application startup, the category table is seeded with default values via SQL insert statement
 
 <img width="776" height="818" alt="image" src="https://github.com/user-attachments/assets/5f269c4e-d7ab-4c11-9396-a690369490d5" />
+
+For testing locally:
+Linux / macOS
+
+export SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/skopjemarathon
+export SPRING_DATASOURCE_USERNAME=postgres
+export SPRING_DATASOURCE_PASSWORD=6vNb9PZb
+export APP_JWT_SECRET=superSecretKey123superSecretKey123
+./gradlew bootRun
+
+Windows PowerShell
+
+$env:SPRING_DATASOURCE_URL="jdbc:postgresql://localhost:5432/skopjemarathon"
+$env:SPRING_DATASOURCE_USERNAME="postgres"
+$env:SPRING_DATASOURCE_PASSWORD="6vNb9PZb"
+$env:APP_JWT_SECRET="superSecretKey123superSecretKey123"
+.\gradlew bootRun
+
+Windows CMD
+
+set SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/skopjemarathon
+set SPRING_DATASOURCE_USERNAME=postgres
+set SPRING_DATASOURCE_PASSWORD=6vNb9PZb
+set APP_JWT_SECRET=superSecretKey123superSecretKey123
+gradlew bootRun
