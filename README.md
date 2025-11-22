@@ -10,9 +10,6 @@ Database name: skopjemarathon
 Username: postgres
 Password: 6vNb9PZb
 
-P.S.: Not ideal having the credentials here, but they are not exposed in the code(.env added to .gitignore)
-
-
 https://ws3333-3182.postman.co/workspace/WS-Workspace~1c54f13a-b90a-410f-bfc1-876b5c0badd3/collection/41348129-2d84f71d-b528-4a0c-a284-05f12a921e30?action=share&creator=41348129&active-environment=41348129-567601e0-9947-491f-97b3-4df49b209a7b
 https://app.getpostman.com/join-team?invite_code=3e0987138cb52cd66efeedb843d15231e662af3eb4ca27d9426a758ab573cdab&target_code=9cfb525eb0b2cdd5a224c3bdb3907660
 (Added a Swagger, but still link to the Postman collection)
