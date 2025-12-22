@@ -57,6 +57,8 @@ public class ContestantService {
     }
 
     public List<ContestantDTO> getAllPaidContestants() {
+        var paidRaces = raceRepository.findByStatus(Status.PAID);
+        System.out.println("Found paid races: " + paidRaces.size());
         return raceRepository.findByStatus(Status.PAID)
                 .stream()
                 .map(Race::getContestant)

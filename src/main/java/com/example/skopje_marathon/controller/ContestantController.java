@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/contestants")
+@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*", allowCredentials = "true")
 public class ContestantController {
     private final RegistrationService registrationService;
     private final ContestantService contestantService;

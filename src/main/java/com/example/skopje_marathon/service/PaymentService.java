@@ -71,7 +71,6 @@ public class PaymentService {
                 } else if (attempts >= 3) {
                     payment.setStatus(PaymentStatus.FAILED);
                     paymentRepository.save(payment);
-
                     response.setRegistrationNumber(race.getRegistrationNumber());
                     response.setStatus(PaymentStatus.FAILED);
                     response.setMessage("Payment failed after retries");

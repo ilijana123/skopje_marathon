@@ -10,6 +10,8 @@ import org.mapstruct.Mapping;
     componentModel = "spring"
 )
 public interface ContestantMapper{
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "race", ignore = true)
     Contestant registerRequestToContestant(RegisterRequest registerRequest);
     @Mapping(source = "race.startNumber", target = "startNumber")
     @Mapping(source = "race.category.distance", target = "distance")
