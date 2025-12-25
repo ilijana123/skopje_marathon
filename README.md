@@ -1,19 +1,33 @@
 Skopje Marathon API
-This is a Spring Boot application designed to manage marathon registrations, race details, and reviews. It uses PostgreSQL for data persistence and is fully containerized with Docker.
 
-🚀 Tech Stack
-Backend: Java, Spring Boot
+Skopje Marathon API is a Spring Boot backend application designed to manage marathon registrations, race details, payments, and reviews. The application uses PostgreSQL for data persistence and is fully containerized using Docker and Docker Compose.
 
-Database: PostgreSQL
+Tech Stack
+Backend
 
-Mapping: MapStruct (for automatic DTO mapping)
+Java
 
-Containerization: Docker & Docker Compose
+Spring Boot
 
-Security: JWT (JSON Web Token)
+Spring Security (JWT authentication)
 
-🛠 Prerequisites
-Before running the application, ensure you have the following installed:
+Database
+
+PostgreSQL
+
+Mapping
+
+MapStruct (automatic DTO to entity mapping)
+
+Containerization
+
+Docker
+
+Docker Compose
+
+Prerequisites
+
+Before running the application, ensure the following tools are installed:
 
 Docker
 
@@ -21,16 +35,14 @@ Docker Compose
 
 Git
 
-⚙️ Setup & Installation
-1. Clone the Repository
-Bash
-
+Setup and Installation
+Clone the Repository
 git clone https://github.com/ilijana123/skopje-marathon.git
 cd skopje-marathon
-2. Configure Environment Variables
-Create a file named .env in the root directory of the project and paste the following configuration:
 
-Code snippet
+Configure Environment Variables
+
+Create a .env file in the root directory of the project and add the following configuration:
 
 POSTGRES_DB=skopjemarathon
 POSTGRES_USER=postgres
@@ -43,53 +55,107 @@ SPRING_DATASOURCE_USERNAME=postgres
 SPRING_DATASOURCE_PASSWORD=6vNb9PZb
 
 APP_JWT_SECRET=superSecretKey123superSecretKey123
-🏃 Running the Application
-Follow these steps to build the JAR file and start the containers:
 
+
+Important:
+
+Do not commit the .env file to version control
+
+Ensure .env is listed in .gitignore
+
+Running the Application
 Build the Project
-Run the Gradle wrapper to build the application while skipping tests:
 
-Bash
+Build the Spring Boot JAR file while skipping tests:
 
 ./gradlew clean build -x test
-Start Services
-Launch the application and the database in detached mode:
 
-Bash
+Start Docker Services
+
+Start the backend and PostgreSQL database using Docker Compose:
 
 docker-compose up -d --build
-API URL: http://localhost:8081
 
-Database: Running on localhost:5432
+Application Access
 
-📖 API Documentation & Testing
+API Base URL:
+http://localhost:8081
+
+PostgreSQL Database:
+localhost:5432
+
+API Documentation and Testing
 Postman
-You can access the API collection and environment via the links below:
 
-View Postman Collection
-Join Postman Team
+The API can be tested using Postman.
 
-Authentication
-Certain endpoints (like review-controller or race-controller for paid races) require authorization:
+Postman Collection: https://ws3333-3182.postman.co/workspace/WS-Workspace~1c54f13a-b90a-410f-bfc1-876b5c0badd3/collection/41348129-2d84f71d-b528-4a0c-a284-05f12a921e30?action=share&creator=41348129&active-environment=41348129-567601e0-9947-491f-97b3-4df49b209a7b
 
- Key Features & Logic
- Payment Simulation
-The payment process is simulated with a logic-based outcome:
+Postman Team Workspace: https://app.getpostman.com/join-team?invite_code=3e0987138cb52cd66efeedb843d15231e662af3eb4ca27d9426a758ab573cdab&target_code=9cfb525eb0b2cdd5a224c3bdb3907660
 
-Success Rate: Each attempt has a 50% chance of success.
+Authentication and Authorization
 
-Retries: A contestant can retry up to 3 times.
+The application uses JWT-based authentication.
 
-Outcome: * If any attempt succeeds: Status is set to SUCCESS and a starting number is generated.
+Some endpoints require authorization, including:
 
-If all 3 attempts fail: Status is set to FAILED.
+review-controller
 
- Identifiers
-Registration Number: Generated randomly.
+race-controller (for paid races)
 
-Starting Number: Generated sequentially upon successful payment.
+The JWT token must be included in the Authorization header:
+
+Authorization: Bearer <token>
+
+Payment Simulation Logic
+
+The payment process is simulated using business logic rules.
+
+Each payment attempt has a 50 percent chance of success
+
+A contestant may retry payment up to three times
+
+Payment Outcome
+
+If any attempt succeeds:
+
+Registration status is set to SUCCESS
+
+A starting number is generated
+
+If all three attempts fail:
+
+Registration status is set to FAILED
+
+Identifiers and Number Generation
+
+Registration number is generated randomly during registration
+
+Starting number is generated sequentially after successful payment
 
 Database Seeding
-On application startup, the category table is automatically seeded with default values via an internal SQL execution script.
 
-<img width="776" height="818" alt="image" src="https://github.com/user-attachments/assets/5f269c4e-d7ab-4c11-9396-a690369490d5" />
+On application startup:
+
+The category table is automatically populated with default values
+
+Seeding is performed via an internal SQL execution script
+
+Docker Services Overview
+
+Backend service: Spring Boot application
+
+Database service: PostgreSQL
+
+Internal Docker network hostname: db
+
+Useful Docker Commands
+
+View logs:
+
+docker-compose logs -f
+
+
+Stop services:
+
+docker-compose down
