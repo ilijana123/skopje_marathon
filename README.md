@@ -1,6 +1,6 @@
 # Skopje Marathon API
 Skopje Marathon API is a Spring Boot backend application designed to manage marathon registrations, race details, payments, and reviews. 
-
+[Frontend built with React + TS + Material UI](https://github.com/ilijana123/skopje_marathon_frontend)
 ## Tech Stack
 - Backend: *Java*, *Spring Boot*
 - Security: Spring Security with JWT Authentication
