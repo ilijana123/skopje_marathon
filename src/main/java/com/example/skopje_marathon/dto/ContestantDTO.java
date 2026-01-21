@@ -10,5 +10,6 @@ public class ContestantDTO {
     private String gender;
     private String team;
     private String country;
+    private Integer age;
     private String distance;
 }
